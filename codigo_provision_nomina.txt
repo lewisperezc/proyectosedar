@@ -1,0 +1,255 @@
+//PROVISON NOMINA PAGO QUINCENAL
+
+			/*
+			$gua_transaccion = $ins_transaccion->guaTransaccion(strtoupper($sigla_provision),$fecha,$nit_id,$cen_cos_id,$sum_seg_nomina,0,$fecha_liquidacion,$num_quincena,$_SESSION['k_nit_id'],$fecha,$mes[1]);
+			*/
+			
+			
+			
+			//CESANTÍAS EMPLEADOS//
+			$aux_tra_completo=($seg_emp_aux_transporte[$a]*2);
+			$ces_empleados=(($seg_emp_salario[$a]+$aux_tra_completo)*$dat_porcentaje[0])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053001','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$ces_empleados','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			//echo $query;
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//INTERESES SOBRE CESANTÍAS EMPLEADO//
+			$int_ces_empleados=(($seg_emp_salario[$a]+$aux_tra_completo)*$dat_porcentaje[1])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053301','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$int_ces_empleados','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//PRIMA DE SERVICIOS EMPLEADO//
+			$pri_ser_empleados=(($seg_emp_salario[$a]+$aux_tra_completo)*$dat_porcentaje[2])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053601','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$pri_ser_empleados','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//VACACIONES EMPLEADO//
+			$vac_empleados=($seg_emp_salario[$a]*$dat_porcentaje[3])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053901','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$vac_empleados','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//CESANTIAS//
+			$cesantias=(($seg_emp_salario[$a]+$aux_tra_completo)*$dat_porcentaje[0])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26100501','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$cesantias','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//INTERESES SOBRE CESANTÍAS//
+			$int_cesantias=(($seg_emp_salario[$a]+$aux_tra_completo)*$dat_porcentaje[1])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26101001','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$int_cesantias','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//PRIMA DE SERVICIOS//
+			$pri_servicios=(($seg_emp_salario[$a]+$aux_tra_completo)*$dat_porcentaje[2])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26102001','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$pri_servicios','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//VACACIONES//
+			$vacaciones=($seg_emp_salario[$a]*$dat_porcentaje[3])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26101501','$num_quincena','$seg_emp_id[$a]','$cen_cos_id','$vacaciones','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//ARL EMPLEADOS//
+			$arp_empleados=($seg_emp_salario[$a]*$arl_empleado)/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51056801','$num_quincena','".$seg_arp."','$cen_cos_id','$arp_empleados','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//EPS EMPLEADO//
+			$eps_empleados=($seg_emp_salario[$a]*$dat_porcentaje[4])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51056901','$num_quincena','".$seg_eps."','$cen_cos_id','$eps_empleados','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			
+			//APORTES A FONDOS DE PENSIONES EMPLEADO//
+			$apo_fon_pen_empleado=($seg_emp_salario[$a]*$dat_porcentaje[5])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057001','$num_quincena','".$seg_pension."','$cen_cos_id','$apo_fon_pen_empleado','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//CAJAS DE COMPENSACIÓN FAMILIAR EMPLEADO//
+			$caj_com_fam_empleado=($seg_emp_salario[$a]*$dat_porcentaje[6])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057201','$num_quincena','".$seg_caj_compensacion."','$cen_cos_id','$caj_com_fam_empleado','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//APORTES ICBF EMPLEADO//
+			$icbf=1066;
+			$apo_icbf_empleado=($seg_emp_salario[$a]*$dat_porcentaje[7])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057501','$num_quincena','".$icbf."','$cen_cos_id','$apo_icbf_empleado','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//SENA EMPLEADO//
+			$sena=1065;
+			$sena_empleado=($seg_emp_salario[$a]*$dat_porcentaje[8])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057801','$num_quincena','".$sena."','$cen_cos_id','$sena_empleado','1','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//APORTES A ADMINISTRADORAS DE RIESGOS PROFESIONALES, ARL//
+			$apo_adm_rie_pro_arp=($seg_emp_salario[$a]*$arl_empleado)/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23700601','$num_quincena','".$seg_arp."','$cen_cos_id','$apo_adm_rie_pro_arp','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//APORTES A ENTIDADES PROMOTORAS DE SALUD, EPS//
+			$apo_ent_pro_sal_eps=($seg_emp_salario[$a]*$dat_porcentaje[4])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23700501','$num_quincena','".$seg_eps."','$cen_cos_id','$apo_ent_pro_sal_eps','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			
+			//$dat_porcentaje[]=$res_dat_pro_nom_administrativa['dat_pro_nom_adm_porcentaje'];
+			/*CESANTIAS EMPLEADOS	8,33,INTERESES SOBRE CESANTIAS EMPLEADOS	1,PRIMA DE SERVICIOS EMPLEADOS	8,33
+			VACACIONES EMPLEADOS	4,17,EPS EMPLEADOS	8,5,APORTES A FONDOS DE PENSIONES EMPLEADOS	12,CAJA DE COMPENSACIÓN FAMILIAR EMPLEADOS	4
+			APORTES ICBF EMPLEADO	3,APORTES SENA EMPLEADO	2*/
+			
+			//APORTES A PENSION//
+			$apo_pension=($seg_emp_salario[$a]*$dat_porcentaje[5])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701501','$num_quincena','".$seg_pension."','$cen_cos_id','$apo_pension','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//APORTES A CAJA DE COMPENSACION//
+			$apo_caj_compensacion=($seg_emp_salario[$a]*$dat_porcentaje[6])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701003','$num_quincena','".$seg_caj_compensacion."','$cen_cos_id','$apo_caj_compensacion','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//APORTES AL ICBF//
+			$icbf=1066;
+			$apo_icbf=($seg_emp_salario[$a]*$dat_porcentaje[7])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701001','$num_quincena','".$icbf."','$cen_cos_id','$apo_icbf','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			//APORTES AL SENA//
+			$sena=1065;
+			$apo_sena=($seg_emp_salario[$a]*$dat_porcentaje[8])/100;
+			$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701002','$num_quincena','".$sena."','$cen_cos_id','$apo_sena','2','$mes_pago','$seg_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			
+			$array_empleados[$a]=$seg_emp_id[$a];
+			/*
+			
+			//METAS Y RESPONSABILIDADES DEBITO//
+			$query="EXECUTE insMovimiento '$sigla_provision',$con_provision,'51054801',$num_quincena,'$nit_id',$cen_cos_id,$lasmetasprovision[$a],1,'$mes_pago','$_SESSION[k_nit_id]',0,0,'$fecha','$mes[1]',$ano";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			
+			//METAS Y RESPONSABILIDADES CREDITO//
+			$query="EXECUTE insMovimiento '$sigla_provision',$con_provision,'26102501',$num_quincena,'$seg_emp_id[$a]',$cen_cos_id,$lasmetasprovision[$a],2,'$mes_pago','$_SESSION[k_nit_id]',0,0,'$fecha','$mes[1]',$ano";
+			$ejecutar=mssql_query($query);
+			$cant_cuentas++;
+			
+			*/
+
+//PROVISION NOMNA PAGO MENSUAL
+
+
+//CESANTÍAS EMPLEADOS//
+		$aux_tra_completo=($men_emp_aux_transporte[$a]*2);
+		$ces_empleados=(($men_emp_quincena[$a]+$aux_tra_completo)*$dat_porcentaje[0])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053001','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$ces_empleados','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		//echo $query;
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//INTERESES SOBRE CESANTÍAS EMPLEADO//
+		$int_ces_empleados=(($men_emp_quincena[$a]+$aux_tra_completo)*$dat_porcentaje[1])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053301','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$int_ces_empleados','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//PRIMA DE SERVICIOS EMPLEADO//
+		$prima_ser_empleados=(($men_emp_quincena[$a]+$aux_tra_completo)*$dat_porcentaje[2])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053601','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$prima_ser_empleados','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//VACACIONES EMPLEADO//
+		$vac_empleados=($men_emp_quincena[$a]*$dat_porcentaje[3])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51053901','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$vac_empleados','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//CESANTIAS//
+		$cesantias=(($men_emp_quincena[$a]+$aux_tra_completo)*$dat_porcentaje[0])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26100501','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$cesantias','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//INTERESES SOBRE CESANTÍAS//
+		$int_cesantias=(($men_emp_quincena[$a]+$aux_tra_completo)*$dat_porcentaje[1])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26101001','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$int_cesantias','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//PRIMA DE SERVICIOS//
+		$pri_servicios=(($men_emp_quincena[$a]+$aux_tra_completo)*$dat_porcentaje[2])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26102001','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$pri_servicios','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//VACACIONES//
+		$vacaciones=($men_emp_quincena[$a]*$dat_porcentaje[3])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','26101501','$men_num_quincena','$men_emp_id[$a]','$cen_cos_id','$vacaciones','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//ARL EMPLEADOS//
+		$arp_empleados=($men_emp_quincena[$a]*$arl_empleado)/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51056801','$men_num_quincena','".$men_arp."','$cen_cos_id','$arp_empleados','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//EPS EMPLEADO//
+		$eps_empleados=($men_emp_quincena[$a]*$dat_porcentaje[4])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51056901','$men_num_quincena','".$men_eps."','$cen_cos_id','$eps_empleados','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+			
+		//APORTES A FONDOS DE PENSIONES EMPLEADO//
+		$apo_fon_pen_empleado=($men_emp_quincena[$a]*$dat_porcentaje[5])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057001','$men_num_quincena','".$men_pension."','$cen_cos_id','$apo_fon_pen_empleado','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//CAJAS DE COMPENSACIÓN FAMILIAR EMPLEADO//
+		$caj_com_fam_empleado=($men_emp_quincena[$a]*$dat_porcentaje[6])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057201','$men_num_quincena','".$men_caj_compensacion."','$cen_cos_id','$caj_com_fam_empleado','1','$mes_pago','$_SESSION[k_nit_id]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//APORTES ICBF EMPLEADO//
+		$icbf=1066;
+		$apo_icbf_empleado=($men_emp_quincena[$a]*$dat_porcentaje[7])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057501','$men_num_quincena','".$icbf."','$cen_cos_id','$apo_icbf_empleado','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//SENA EMPLEADO//
+		$sena=1065;
+		$sena_empleado=($men_emp_quincena[$a]*$dat_porcentaje[8])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','51057801','$men_num_quincena','".$sena."','$cen_cos_id','$sena_empleado','1','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//APORTES A ADMINISTRADORAS DE RIESGOS PROFESIONALES, ARL//
+		$apo_adm_rie_pro_arp=($men_emp_quincena[$a]*$arl_empleado)/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23700601','$men_num_quincena','".$men_arp."','$cen_cos_id','$apo_adm_rie_pro_arp','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//APORTES A ENTIDADES PROMOTORAS DE SALUD, EPS//
+		$apo_ent_pro_sal_eps=($men_emp_quincena[$a]*$dat_porcentaje[4])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23700501','$men_num_quincena','".$men_eps."','$cen_cos_id','$apo_ent_pro_sal_eps','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+			
+		//$dat_porcentaje[]=$res_dat_pro_nom_administrativa['dat_pro_nom_adm_porcentaje'];
+		/*CESANTIAS EMPLEADOS	8,33,INTERESES SOBRE CESANTIAS EMPLEADOS	1,PRIMA DE SERVICIOS EMPLEADOS	8,33
+		VACACIONES EMPLEADOS	4,17,EPS EMPLEADOS	8,5,APORTES A FONDOS DE PENSIONES EMPLEADOS	12,CAJA DE COMPENSACIÓN FAMILIAR EMPLEADOS	4
+		APORTES ICBF EMPLEADO	3,APORTES SENA EMPLEADO	2*/
+			
+		//APORTES A PENSION//
+		$apo_pension=($men_emp_quincena[$a]*$dat_porcentaje[5])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701501','$men_num_quincena','".$men_pension."','$cen_cos_id','$apo_pension','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//APORTES A CAJA DE COMPENSACION//
+		$apo_caj_compensacion=($men_emp_quincena[$a]*$dat_porcentaje[6])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701003','$men_num_quincena','".$men_caj_compensacion."','$cen_cos_id','$apo_caj_compensacion','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//APORTES AL ICBF//
+		$icbf=1066;
+		$apo_icbf=($men_emp_quincena[$a]*$dat_porcentaje[7])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701001','$men_num_quincena','".$icbf."','$cen_cos_id','$apo_icbf','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		//APORTES AL SENA//
+		$sena=1065;
+		$apo_sena=($men_emp_quincena[$a]*$dat_porcentaje[8])/100;
+		$query="EXECUTE insMovimiento '$sigla_provision','$con_provision','23701002','$men_num_quincena','".$sena."','$cen_cos_id','$apo_sena','2','$mes_pago','$men_emp_id[$a]','0','0','$fecha','$mes[1]','$ano'";
+		$ejecutar=mssql_query($query);
+		$cant_cuentas++;
+		
+		$array_empleados[$a]=$men_emp_id[$a];
