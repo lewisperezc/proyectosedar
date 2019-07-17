@@ -1,0 +1,12 @@
+@charset "utf-8";
+.numeros_alineados
+{
+	text-align:right;
+}
+
+
+.texto_alineado_izquierda td,th
+{
+	text-align:left;
+	font-weight:bold;
+}

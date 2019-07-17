@@ -1,0 +1,25 @@
+
+#navegacion a
+{
+	background-color: #03C;
+	border:solid 1px #003300;
+	color:#FFF;
+	margin:0 5px 0 0;
+	padding:1px 5px;
+}
+#navegacion a:hover
+{
+	background-color: #930;
+	color: #CF3;
+}
+
+.sobre td
+{
+	border:medium;
+}
+.sobre tr:hover td
+{
+    background-color:#397AAC;
+}
+
+/* estilos en las tablas */

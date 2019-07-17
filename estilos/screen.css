@@ -1,0 +1,161 @@
+/* capas de la maqueta */
+#contorno
+{
+	border:solid 1px #000;
+	font:normal 90% calibri,Verdana,Arial,Helvetica,sans-serif;
+	margin:0 auto;
+	width:auto;
+}
+#cabecera
+{
+	background:#FFF url(../imagenes/logo_sedar_dentro.png) no-repeat top center;
+	height:210px;     
+}
+#cabecera1
+{
+	background:#FFF url(../imagenes/Header1.jpg) no-repeat top left;
+	height:220px;
+}
+#navegacion
+{
+	background-color:#00923F; /*#00C600;*/
+	height:35px;
+	text-align:left;
+	line-height:24px;
+}
+#menu
+{
+	background-color:#F2F2F2;
+	float:left;
+	min-height:600px;
+	width:18%;
+}
+
+#menu ul li a:hover{
+	font-weight:bold;
+	font-size:14px;
+}
+
+#contenido
+{
+	background-color:#FFFFFF;
+	border-left:solid 1px #333333;
+	/*margin-left:0%;*/
+	min-height:600px;
+	/*overflow:scroll;*/
+}
+
+#entrada
+{
+	background-color:#CCC;
+	border-left:solid 0px #09F;
+	min-height:200px;
+}
+#Ingreso {
+	position:absolute;
+	width:242px;
+	height:100px;
+	z-index:1;
+	left: 984px;
+	top: 10px;
+}
+
+#pie
+{
+	background-color:#F2F2F2;
+	border-top:solid 2px #000;
+	text-align:center;
+	font-weight:bold;
+}
+/* etiquetas */
+body
+{
+	background-color:#CCC;  /*#0099FF;*/
+}
+#navegacion ul li
+{
+	display:inline;
+}
+#navegacion ul li a
+{
+	background-color: #00923F;
+	border:inset 1px #FFF;
+	color:#FFFFFF;
+	margin:0px;
+	padding:1px 5px;
+	float:left;
+	height:30px;
+}
+
+#navegacion ul li a:hover
+{
+	background-color:#00589D; /*#0000FF;*/
+	color: #FFF;
+}
+/* estilos en las tablas */
+table
+{
+width:auto;
+border:solid 1px #006600;
+margin:0;
+float: center;
+text-align:center;
+}
+td
+{
+background-color:#CECECE;
+padding:2px 2px;
+text-align:center;
+}
+th
+{
+background-color:#555555;
+color:#FFFFFF;
+padding:2px 10px;
+}
+tr
+{
+
+}
+.campo
+{
+	background-color:#EEE;
+}
+/*.caja,input,textarea
+{
+	background-color:#66CCFF;
+	border:solid 1px #666666;
+	text-transform:uppercase;
+}
+input
+{
+  text-transform:uppercase;
+  text-align:center;
+  margin:1px 0 0 0;
+  width:120px;
+}
+caja
+{
+	background:#FFF;
+	size:50px;
+    	
+}
+/*desde aqui*/
+.a
+{
+	text-align:center;
+	text-decoration:underline;
+	display:block;	
+}
+
+.div_tabla{
+	float:left;
+	text-align:left;
+	vertical-align:top;
+	width:100%;
+	margin:10px;
+	padding:0px;
+}
+.div_tabla input{
+	background:#CCC;
+}

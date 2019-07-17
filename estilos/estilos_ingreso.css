@@ -1,0 +1,135 @@
+body{
+	margin:0px;
+	background:#CCC;
+}
+.contorno
+{
+	border:solid 1px #000;
+	font:normal 90% calibri,Verdana,Arial,Helvetica,sans-serif;
+	margin:0 auto;
+	width:822px;
+}
+.cabecera
+{
+	background:#CCCCCC url(../imagenes/logo_sedar_2.png) no-repeat top center;
+	height:238px;
+	width:822px;
+	border-bottom:solid 1px #000;
+}
+.formulario{
+	height:400px;
+	width:822;
+	background:#FFF;
+}
+.piepagina{
+	height:30px;
+	width:822;
+	border-top:solid 1px #000;
+	background:#FFF;
+	text-align:center;
+}
+.formu{
+	width:400px;
+	height:350px;
+	float:left;
+	margin:0px;
+	margin-left:250px;
+	margin-right:172px;
+	margin-top:40px;
+}
+
+fieldset
+{
+	width:300px;
+	border:#000 solid 1px;
+	height:auto;
+	font-weight:bold;
+	border-color:#06C;
+	border-collapse:collapse;
+	border:double;
+}
+fieldset legend
+{
+	color:#060;
+	font-weight:bold;
+}
+
+.campo{
+	background:#CCC;
+	color:#060;
+}
+.campo:hover{
+	background:#999;
+}
+
+.boton{
+	border:#000 groove 2px;
+	width:90px;
+}
+.boton:hover{
+	width:105px;
+	background:#666;
+	color:#FFF;
+}
+.boton:focus{
+	width:105px;
+	background:#666;
+	color:#FFF;
+}
+
+
+.texto{
+	width:300px;
+	text-align:center;
+}
+
+label{
+	color:#060;
+}
+/***********************FORMULARIO**************************/
+/*
+label,input,textarea
+{
+	display:block;
+}
+label
+{
+	color:#FFF;
+}
+input
+{
+	width:70%;
+	/*margin-bottom:5px;*/
+	/*padding:5px;
+}
+input:focus,textarea:focus
+{
+	background-color:#FFF;/*Color Del Campo*/
+/*	color:#066;/*Color De La Fuente*/
+/*	border-top:3px solid #066;
+	border-left:3px solid #066;
+	border-right:1px solid #066;
+	border-bottom:1px solid #066;
+	/*padding:4px;  Agrandar El Campo Cuando Se Paren Sobre Él*//*
+}
+input:hover,textarea:hover
+{
+	border-top:3px solid #FFF;
+	border-left:3px solid #FFF;
+	border-right:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+	background-color:#066;
+	color:#FFF;
+}
+fieldset
+{
+	width:300px;
+}
+fieldset legend
+{
+	color:#F60;
+}
+textarea
+{
+	width:100%;
+}

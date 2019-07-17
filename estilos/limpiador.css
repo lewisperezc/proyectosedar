@@ -1,0 +1,56 @@
+a,abbr,acronym,address,applet,blockquote,big,body,caption,center,cite,code,dd,del,dfn,div,dl,dt,em,fieldset,font,form,
+h1,h2,h3,h4,h5,h6,html,iframe,i,img,input,ins,kbd,label,legend,li,object,ol,p,pre,q,s,samp,small,span,strike,strong,
+sub,sup,table,tbody,td,textarea,tfoot,th,thead,tr,tt,u,ul,var
+{
+	border:0;
+	font-family:inherit;
+	font-size:100%;
+	font-style:normal;
+	font-weight:normal;
+	margin:0;
+	outline:0;
+	padding:0;
+	vertical-align:baseline;
+}
+a
+{
+	text-decoration:none;
+}
+blockquote,q
+{
+	quotes:"" "";
+}
+blockquote:after,blockquote:before,q:after,q:before;
+{
+	content:"";
+}
+body
+{
+	height:100%;
+	line-height:1.0em;
+}
+caption,th
+{
+	text-align:left;
+}
+form
+{
+	display:block;
+}
+hr
+{
+	background-color:#000000;
+	border:0;
+	color:#000000;
+	height:1px;
+	margin:0;
+	padding:0;
+}
+ol,ul
+{
+	list-style:none;
+}
+:focus
+{
+	outline:0;
+}
