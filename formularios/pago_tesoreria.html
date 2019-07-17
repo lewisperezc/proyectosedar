@@ -1,0 +1,103 @@
+<?php session_start();
+if(!$_SESSION["k_username"] || !$_SESSION['k_password']){ header("Location:../ingreso/index.php"); }
+?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "xhtml1-transitional.dtd">
+<html>
+<head>
+<?php
+  include_once('clases/cuenta.class.php');
+  include_once('clases/moviminetos_contables.class.php');
+?>
+<style type="text/css">
+	div.contenedor {
+		position: relative;
+		width: 100px;
+	}
+	
+	input {
+		font-family: Arial;
+		color: #008585;
+		font-size: 8pt;
+		border: 1px solid #008585;
+		padding-left: 3px;
+		width: 130px;
+	}
+
+	div.fill {
+		font-family: Arial;
+		font-size: 8pt;
+		display: none;
+		width: 128px;
+		position:absolute;
+		color: #E0EBEB;
+		background-color: #E0EBEB;
+		border: 1px solid #008585;
+		overflow: auto;
+		height: 150px;
+		top: -1px;
+	}
+
+	tr.fill {
+		font-family: Arial;
+		font-size: 8pt;
+		color: #E0EBEB;
+		background-color: #008585;
+		border: 1px solid #008585;
+	}
+
+	tr {
+		font-family: Arial;
+		font-size: 8pt;
+		background-color: #E0EBEB;
+		color: #008585;
+		border: 1px solid #E0EBEB;
+	}
+</style>
+
+<script>
+	function enviar()
+	{
+		document.pag_teso.submit();
+	}
+</script>
+<script src="librerias/ajax/autocompletar.js" language="javascript"></script>
+<form name="pag_teso" method="post" action="#">
+ <center>
+  <table id="tab_pagos">
+   <tr>
+    <td>Cuentas por pagar</td>
+    <td>
+      <select name="cuenta" id="cuenta">
+       <option value="0" onclick="enviar();">Seleccione...</option>
+      </select>
+    </td>
+    </tr>
+    </table>
+    Identificacion tercero
+	<div>
+       <input type="text" id="tercero" name="tercero" autocomplete="off" 
+		  onkeyup="inputFilling(event, this)" 
+		  onblur="setInput(this, document.getElementById('lista'))">
+		&nbsp;
+		<img src="../imagenes/abajo.gif" border="0" onmouseover="cambiarImagen(this, true)" 
+		     onmouseout="cambiarImagen(this, false)" class="boton" 
+			 onclick="cargaLista(event, document.getElementById('tercero'), '')" alt="Mostrar" />
+        <div class="contenedor"><div id="lista" class="fill"></div>
+    </div>
+    </div>
+  <?php
+    if($_POST['cuenta'])
+	  { ?>
+        <table id="nit_cue">
+         <tr>
+          <td>Nits con saldo</td>
+         </tr>
+        </table>
+		<?php  
+	  }
+  ?>
+ </center>
+</form>
